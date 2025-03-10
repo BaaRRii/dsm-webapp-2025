@@ -7,7 +7,7 @@ import { ShoppingCart, ScrollText } from 'lucide-react';
 
 function Header(){
   return(
-    <Navbar expand="md" className="bg-body-tertiary" fixed='top'>
+    <Navbar expand="md" className="bg-body-tertiary" sticky='top'>
       <Container fluid>
         <Navbar.Brand href="#home">E-COMMERCE</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
