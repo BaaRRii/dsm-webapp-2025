@@ -1,0 +1,121 @@
+.product-container {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 450px;
+  transition: transform 0.2s;
+  overflow: hidden;
+  background-color: white;
+}
+
+.product-container:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  height: 200px;
+  position: relative;
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-image {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+
+.stock-limited {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e53e3e;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-name {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.product-description {
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.product-price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+  color: #2d3748;
+}
+
+.availability {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.available {
+  color: #38a169;
+  background-color: rgba(56, 161, 105, 0.1);
+}
+
+.sold-out {
+  color: #e53e3e;
+  background-color: rgba(229, 62, 62, 0.1);
+}
+
+.add-to-cart {
+  background-color: #4299e1;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: auto;
+}
+
+.add-to-cart:hover:not(:disabled) {
+  background-color: #3182ce;
+}
+
+.disabled{
+  background-color: #cbd5e0 !important;
+  cursor: not-allowed !important;
+}

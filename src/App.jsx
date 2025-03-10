@@ -1,6 +1,9 @@
 import Header from './components/Header'
 import { getProducts } from './utils/firebaseService';
 import { useState, useEffect } from 'react';
+
+import ListaProductos from './components/ListaProductos';
+
 import './App.css'
 
 function App() {
@@ -23,7 +26,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <h1>APP</h1>
+      <ListaProductos productos={productos}></ListaProductos>
     </>
   )
 }
