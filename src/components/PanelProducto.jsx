@@ -1,7 +1,10 @@
 import "./PanelProducto.css";
 
+import { useState } from "react";
+
 function PanelProducto(props) {
   const { nombre, descripcion, precio, stock, imagen } = props.producto;
+  const [cantidad, setCantidad] = useState(0);
 
   return (
     <div className="product-container">
@@ -28,9 +31,29 @@ function PanelProducto(props) {
           </span>
         </div>
 
-        <button className={`add-to-cart ${stock > 0 ? "" : "disabled"}`}>
-          {stock > 0 ? "Añadir al carrito" : "Sin stock"}
-        </button>
+        {/* TODO: añadir funcionalidad de añadir y quitar del carrito */}
+
+        {stock > 0 ? (
+          <div className="quantity-control">
+            <button 
+              className="quantity-btn" 
+              disabled={cantidad === 0}
+            >
+              -
+            </button>
+            <span className="quantity-display">{cantidad}</span>
+            <button 
+              className="quantity-btn" 
+              disabled={cantidad === stock}
+            >
+              +
+            </button>
+          </div>
+        ) : (
+          <div className="out-of-stock">Sin stock</div>
+        )}
+
+
       </div>
     </div>
   );

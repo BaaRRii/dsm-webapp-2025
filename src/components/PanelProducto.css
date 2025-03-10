@@ -99,23 +99,57 @@
   background-color: rgba(229, 62, 62, 0.1);
 }
 
-.add-to-cart {
-  background-color: #4299e1;
-  color: white;
-  font-weight: bold;
+/* Añade estos estilos a tu archivo PanelProducto.css existente */
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  border: 1px solid #e2e8f0;
   border-radius: 5px;
-  padding: 10px 15px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.quantity-btn {
+  background-color: #f7fafc;
   border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: background-color 0.2s;
-  margin-top: auto;
 }
 
-.add-to-cart:hover:not(:disabled) {
-  background-color: #3182ce;
+.quantity-btn:hover:not(:disabled) {
+  background-color: #edf2f7;
 }
 
-.disabled{
-  background-color: #cbd5e0 !important;
-  cursor: not-allowed !important;
+.quantity-btn:disabled {
+  color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.quantity-display {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 15px;
+}
+
+.out-of-stock {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 15px;
+  width: 100%;
 }
