@@ -1,10 +1,27 @@
 import "./PanelProducto.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ContextoCarrito } from "../store/ContextoCarrito";
+
 
 function PanelProducto(props) {
-  const { nombre, descripcion, precio, stock, imagen } = props.producto;
+  const { id, nombre, descripcion, precio, stock, imagen } = props.producto;
   const [cantidad, setCantidad] = useState(0);
+  const { addToCart, removeFromCart } = useContext(ContextoCarrito);
+
+  const handleAdd = () => {
+    if (cantidad < stock) {
+      setCantidad(cantidad + 1);
+      addToCart(props.producto);
+    }
+  };
+
+  const handleRemove = () => {
+    if (cantidad > 0) {
+      setCantidad(cantidad - 1);
+      removeFromCart(id);
+    }
+  };
 
   return (
     <div className="product-container">
@@ -38,6 +55,7 @@ function PanelProducto(props) {
             <button 
               className="quantity-btn" 
               disabled={cantidad === 0}
+              onClick={handleRemove}
             >
               -
             </button>
@@ -45,6 +63,7 @@ function PanelProducto(props) {
             <button 
               className="quantity-btn" 
               disabled={cantidad === stock}
+              onClick={handleAdd}
             >
               +
             </button>

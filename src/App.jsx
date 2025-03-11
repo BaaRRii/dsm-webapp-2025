@@ -3,6 +3,7 @@ import { getProducts } from './utils/firebaseService';
 import { useState, useEffect } from 'react';
 
 import ListaProductos from './components/ListaProductos';
+import { CarritoProvider } from './store/ContextoCarrito';
 
 import './App.css'
 
@@ -25,8 +26,10 @@ function App() {
 
   return (
     <>
-      <Header></Header>
-      <ListaProductos productos={productos}></ListaProductos>
+      <CarritoProvider>
+        <Header></Header>
+        <ListaProductos productos={productos}></ListaProductos>
+      </CarritoProvider>
     </>
   )
 }
