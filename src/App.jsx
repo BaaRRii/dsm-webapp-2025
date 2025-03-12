@@ -2,8 +2,9 @@ import Header from './components/Header'
 import { getProducts } from './utils/firebaseService';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ListaProductos from './components/ListaProductos';
 import { CarritoProvider } from './store/ContextoCarrito';
+import ListaProductos from './components/ListaProductos';
+import Carrito from './components/Carrito';
 
 import './App.css'
 
@@ -31,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ListaProductos productos={productos} />} />
           <Route path="/catalogo" element={<ListaProductos productos={productos} />} />
-          <Route path="/carrito" element={<></>} />
+          <Route path="/carrito" element={<Carrito/>} />
         </Routes>
       </CarritoProvider>
     </>
