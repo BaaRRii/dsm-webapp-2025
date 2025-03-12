@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { CarritoProvider } from './store/ContextoCarrito';
 import ListaProductos from './components/ListaProductos';
 import Carrito from './components/Carrito';
+import Login from './components/Login';
 
 import './App.css'
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<ListaProductos productos={productos} />} />
           <Route path="/catalogo" element={<ListaProductos productos={productos} />} />
           <Route path="/carrito" element={<Carrito/>} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </CarritoProvider>
     </>

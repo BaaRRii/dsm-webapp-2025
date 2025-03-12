@@ -22,6 +22,9 @@ function Header(){
               <ShoppingCart></ShoppingCart>
               <span>Carrito</span>
             </Nav.Link>
+            <Nav.Link as={Link} to="/login" className='nav-item'>
+              <span>Login</span>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

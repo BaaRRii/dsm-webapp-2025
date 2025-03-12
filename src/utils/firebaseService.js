@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const auth = getAuth(app);
 
 export const getProducts = () => {
   return new Promise((resolve, reject) => {
@@ -27,4 +29,16 @@ export const getProducts = () => {
       }
     }, {onlyOnce:false});
   })
+};
+
+export const registerUser = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const loginUser = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
+};
+
+export const logoutUser = () => {
+  return signOut(auth);
 };
