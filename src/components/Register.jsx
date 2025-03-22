@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { loginUser } from "../utils/firebaseService";
+import { registerUser } from "../utils/firebaseService";
 import { useNavigate } from "react-router-dom";
 import "./AuthForms.css";
 
-function Login() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(email, password);
+      await registerUser(email, password);
       navigate("/");
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -20,7 +20,7 @@ function Login() {
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -30,10 +30,10 @@ function Login() {
           <label>Password:</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Register;
