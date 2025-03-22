@@ -6,8 +6,12 @@ import { ContextoCarrito } from "../store/ContextoCarrito";
 
 function PanelProducto(props) {
   const { id, nombre, descripcion, precio, stock, imagen } = props.producto;
-  const [cantidad, setCantidad] = useState(0);
-  const { addToCart, removeFromCart } = useContext(ContextoCarrito);
+  const { cart, addToCart, removeFromCart } = useContext(ContextoCarrito);
+  
+  const productoEnCarrito = cart.find((item) => item.id === id);
+  const cantidadEnCarrito = productoEnCarrito ? productoEnCarrito.cantidad : 0;
+  
+  const [cantidad, setCantidad] = useState(cantidadEnCarrito);
 
   const handleAdd = () => {
     if (cantidad < stock) {
@@ -47,8 +51,6 @@ function PanelProducto(props) {
             {stock > 0 ? "Disponible" : "Agotado"}
           </span>
         </div>
-
-        {/* TODO: añadir funcionalidad de añadir y quitar del carrito */}
 
         {stock > 0 ? (
           <div className="quantity-control">
