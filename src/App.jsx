@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { CarritoProvider } from "./store/ContextoCarrito";
 import { AuthProvider } from "./store/AuthContext";
+import Checkout from "./components/Checkout";
+import PrivateRoute from "./components/PrivateRoute";
 import ListaProductos from "./components/ListaProductos";
 import Carrito from "./components/Carrito";
 import Login from "./components/Login";
@@ -38,6 +40,7 @@ function App() {
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/checkout" element={<PrivateRoute> <Checkout></Checkout> </PrivateRoute>} />
           </Routes>
         </CarritoProvider>
       </AuthProvider>

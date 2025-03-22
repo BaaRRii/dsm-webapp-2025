@@ -1,9 +1,22 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ContextoCarrito } from "../store/ContextoCarrito";
 import "./Carrito.css";
 
 function Carrito() {
   const { cart, removeFromCart, addToCart } = useContext(ContextoCarrito);
+  const navigate = useNavigate();
+
+  const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
+
+  const handleFinalizarPedido = () => {
+    setMostrarConfirmacion(true);
+  };
+
+  const handleCerrarModal = () => {
+    setMostrarConfirmacion(false);
+    navigate("/checkout");
+  }
 
   const total = cart.reduce((suma, item) => {
     return suma + item.precio * item.cantidad;
@@ -73,10 +86,34 @@ function Carrito() {
               <span className="total-label">Total:</span>
               <span className="total-valor">{total.toFixed(2)}€</span>
             </div>
-            <button className="btn-finalizar">Finalizar Compra</button>
+            <button className="btn-finalizar" onClick={handleFinalizarPedido}>Realizar pedido</button>
           </div>
         </>
       )}
+
+      {mostrarConfirmacion && (
+        <div className="modal-overlay">
+          <div className="modal-confirmacion">
+            <h2>Confirmación de Pedido</h2>
+            <div className="detalles-pedido">
+              {cart.map((item) => (
+                <div key={item.id} className="detalle-item">
+                  <span>{item.nombre}</span>
+                  <span>{item.cantidad} x {item.precio}€</span>
+                </div>
+              ))}
+            </div>
+            <div className="total-pedido">
+              <span className="total-label">Total: </span>
+              <span className="total-valor">{total.toFixed(2)}€</span>
+            </div>
+            <button className="btn-cerrar" onClick={handleCerrarModal}>
+              Continuar
+            </button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

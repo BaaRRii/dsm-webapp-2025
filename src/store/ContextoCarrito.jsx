@@ -29,8 +29,12 @@ export const CarritoProvider = ({ children }) => {
     );
   };
 
+  const clearCart = () => {
+    setCart([]);
+  }
+
   return (
-    <ContextoCarrito.Provider value={{ cart, addToCart, removeFromCart }}>
+    <ContextoCarrito.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </ContextoCarrito.Provider>
   );

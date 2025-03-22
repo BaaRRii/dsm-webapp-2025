@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, push } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const firebaseConfig = {
@@ -30,6 +30,11 @@ export const getProducts = () => {
     }, {onlyOnce:false});
   })
 };
+
+export const saveOrder = (userId, orderData) => {
+  const ordersRef = ref(db, `pedidos/${userId}`);
+  return push(ordersRef, orderData);
+}
 
 export const registerUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
