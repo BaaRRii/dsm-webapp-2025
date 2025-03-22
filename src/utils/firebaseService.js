@@ -27,7 +27,26 @@ export const getProducts = () => {
       } else {
         reject("No hay productos");
       }
-    }, {onlyOnce:false});
+    }, { onlyOnce: false });
+  })
+};
+
+export const getPedidos = (userId) => {
+  return new Promise((resolve, reject) => {
+    const pedidosRef = ref(db, `pedidos/${userId}`);
+    onValue(
+      pedidosRef,
+      (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          resolve(Object.entries(data).map(([id, order]) => ({ id, ...order })));
+        } else {
+          resolve([]);
+        }
+      }, 
+      (error) => {
+        reject(error);
+      });
   })
 };
 

@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { saveOrder } from "../utils/firebaseService";
 import { AuthContext } from "../store/AuthContext";
 import { ContextoCarrito } from "../store/ContextoCarrito";
@@ -14,6 +15,7 @@ function Checkout() {
 
   const { cart, clearCart } = useContext(ContextoCarrito); 
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +35,8 @@ function Checkout() {
     try {
       await saveOrder(user.uid, pedido);
       clearCart();
+      setFormData({ nombre: "", apellido: "", direccion: "" });
+      navigate("/pedidos");
     } catch (error) {
       console.error("Error al guardar el pedido:", error);
       alert("Hubo un error al realizar el pedido. Inténtalo de nuevo.");

@@ -1,0 +1,28 @@
+.lista-pedidos{
+  margin: 20px
+}
+
+.pedido-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.pedido-usuario, .pedido-productos {
+  margin-bottom: 15px;
+}
+
+.producto-item {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+h2, h3 {
+  color: #333;
+}
+
+strong {
+  color: #555;
+}

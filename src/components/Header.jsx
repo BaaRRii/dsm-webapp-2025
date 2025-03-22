@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../store/AuthContext";
 import "./Header.css";
 
-import { ShoppingCart, ScrollText } from "lucide-react";
+import { ShoppingCart, ScrollText, ListRestart } from "lucide-react";
 
 function Header() {
   const { user, logout } = useContext(AuthContext);
@@ -35,6 +35,10 @@ function Header() {
             <Nav.Link as={Link} to="/carrito" className="nav-item">
               <ShoppingCart />
               <span>Carrito</span>
+            </Nav.Link>
+            <Nav.Link as={Link} to="/pedidos" className="nav-item">
+              <ListRestart />
+              <span>Mis pedidos</span>
             </Nav.Link>
           </Nav>
           <Nav className="ms-auto">

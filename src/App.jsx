@@ -10,6 +10,7 @@ import ListaProductos from "./components/ListaProductos";
 import Carrito from "./components/Carrito";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import ListaPedidos from "./components/ListaPedidos";
 
 import "./App.css";
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/checkout" element={<PrivateRoute> <Checkout></Checkout> </PrivateRoute>} />
+            <Route path="/pedidos" element={<PrivateRoute> <ListaPedidos></ListaPedidos> </PrivateRoute>} />
           </Routes>
         </CarritoProvider>
       </AuthProvider>
