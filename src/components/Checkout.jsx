@@ -13,6 +13,13 @@ function Checkout() {
     direccion: "",
   });
 
+  const [mostrarAgradecimiento, setMostrarAgradecimiento] = useState(false);
+
+  const handleCerrarModal = () => {
+    setMostrarAgradecimiento(false);
+    navigate("/");
+  }
+
   const { cart, clearCart } = useContext(ContextoCarrito); 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -36,7 +43,7 @@ function Checkout() {
       await saveOrder(user.uid, pedido);
       clearCart();
       setFormData({ nombre: "", apellido: "", direccion: "" });
-      navigate("/pedidos");
+      setMostrarAgradecimiento(true);
     } catch (error) {
       console.error("Error al guardar el pedido:", error);
       alert("Hubo un error al realizar el pedido. Inténtalo de nuevo.");
@@ -44,6 +51,21 @@ function Checkout() {
   };
 
   return (
+    <>
+      {mostrarAgradecimiento && (
+        <div className="modal-overlay">
+          <div className="modal-confirmacion">
+            <span>
+              ¡Gracias por tu pedido! Se ha registrado en la base de datos.
+            </span>
+            <br></br>
+            <button className="btn-cerrar" onClick={handleCerrarModal}>
+              Realizar un nuevo pedido
+            </button>
+          </div>
+        </div>
+      )}
+
     <div className="checkout-container">
       <h1>Checkout</h1>
       <form onSubmit={handleSubmit} className="checkout-form">
@@ -85,6 +107,7 @@ function Checkout() {
         </button>
       </form>
     </div>
+    </>
   );
 }
 
