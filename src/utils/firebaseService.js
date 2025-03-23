@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, push } from "firebase/database";
+import { getDatabase, ref, onValue, push, set } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 const firebaseConfig = {
@@ -48,6 +48,11 @@ export const getPedidos = (userId) => {
         reject(error);
       });
   })
+};
+
+export const deleteOrder = (userId, orderId) => {
+  const orderRef = ref(db, `pedidos/${userId}/${orderId}`);
+  return set(orderRef, null);
 };
 
 export const saveOrder = (userId, orderData) => {

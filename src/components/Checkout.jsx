@@ -59,6 +59,7 @@ function Checkout() {
               ¡Gracias por tu pedido! Se ha registrado en la base de datos.
             </span>
             <br></br>
+            <br></br>
             <button className="btn-cerrar" onClick={handleCerrarModal}>
               Realizar un nuevo pedido
             </button>

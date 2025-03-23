@@ -1,28 +1,93 @@
-.lista-pedidos{
-  margin: 20px
+.lista-pedidos {
+  max-width: 900px;
+  margin: 30px auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .pedido-item {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pedido-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-item h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 12px;
+  font-size: 18px;
 }
 
 .pedido-usuario, .pedido-productos {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.pedido-usuario h4, .pedido-productos h4 {
+  color: #3498db;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.pedido-usuario p, .pedido-productos p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.pedido-productos ul {
+  padding: 0;
+  list-style-type: none;
 }
 
 .producto-item {
-  margin-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;  
 }
 
-h2, h3 {
-  color: #333;
+.producto-item:last-child {
+  margin-bottom: 0;
+}
+
+.producto-item p {
+  margin: 6px 0;
 }
 
 strong {
-  color: #555;
+  color: #34495e;
+  font-weight: 600;
+}
+
+.btn-borrar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  background-color: #dc3545; /* Rojo */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-borrar:hover {
+  background-color: #c82333; /* Rojo más oscuro */
+}
+
+.btn-borrar svg {
+  vertical-align: middle;
 }

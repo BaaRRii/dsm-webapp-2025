@@ -1,12 +1,23 @@
 import { useEffect, useState, useContext } from "react";
-import { getPedidos } from "../utils/firebaseService";
+import { getPedidos, deleteOrder } from "../utils/firebaseService";
 import { AuthContext } from "../store/AuthContext";
+import { Trash2 } from "lucide-react";
 
 import "./ListaPedidos.css";
 
 function ListaPedidos() {
   const { user } = useContext(AuthContext);
   const [pedidos, setPedidos] = useState([]);
+
+  const handleBorrarPedido = async (id) => {
+    try {
+      deleteOrder(user.uid, id);
+      const pedidosActualizados = pedidos.filter((pedido) => pedido.id !== id);
+      setPedidos(pedidosActualizados);
+    } catch (error) {
+      console.error("Error al borrar el pedido:", error);
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,6 +79,10 @@ function ListaPedidos() {
               <p>
                 <strong>Total:</strong> {pedido.total}€
               </p>
+              <button className="btn-borrar" onClick={() => handleBorrarPedido(pedido.id)}>
+                <Trash2 size={16} />
+                BORRAR
+              </button>
             </div>
           ))}
         </>
