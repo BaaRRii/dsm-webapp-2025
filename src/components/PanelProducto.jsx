@@ -29,9 +29,9 @@ function PanelProducto(props) {
 
   return (
     <div className="product-container">
-      <div className="product-image">
+      <div className="product-image-container">
         {imagen ? (
-          <img src={imagen} alt={nombre} />
+          <img src={imagen} alt={nombre} className="product-image"/>
         ) : (
           <div className="no-image">Sin imagen</div>
         )}
